@@ -13,4 +13,9 @@ def home(request):
     return render(request, 'dashboard/home.html', context)
 
 def about(request):
-    return render(request, 'dashboard/about.html')
+
+    context = {
+        'page_title': 'About Personal Expense Tracker'
+    }
+    
+    return render(request, 'dashboard/about.html', context)
