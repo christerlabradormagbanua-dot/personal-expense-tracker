@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>{{ page_title }}</title>
 </head>
 <body>
 
     <h1>{{ page_title }}</h1>
 
-    <h2>Financial Summary</h2>
+    {% if user.is_authenticated %}
 
-    <p>Total Income: ₱{{ total_income }}</p>
+        <h2>Financial Summary</h2>
 
-    <p>Total Expenses: ₱{{ total_expenses }}</p>
+        <p>Total Income: ₱{{ total_income|floatformat:2 }}</p>
 
-    <p>Current Balance: ₱{{ balance }}</p>
+        <p>Total Expenses: ₱{{ total_expenses|floatformat:2 }}</p>
+
+        <p>Current Balance: ₱{{ balance|floatformat:2 }}</p>
+
+    {% else %}
+
+        <p>Please log in to view your financial dashboard.</p>
+        <a href="/admin/login/">Log in for testing</a>
+
+    {% endif %}
 
 </body>
 </html>
